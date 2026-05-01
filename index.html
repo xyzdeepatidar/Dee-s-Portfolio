@@ -1,1932 +1,1465 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta Tags -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Durgesh Patidar - Senior Project Engineer specializing in industrial construction, project management, and facility engineering with $100M+ in project delivery.">
-  <meta name="keywords" content="Project Engineer, Civil Engineer, Industrial Construction, Project Management, Facility Engineering">
-  <meta name="author" content="Durgesh Patidar">
-  <meta name="theme-color" content="#1e40af">
-  <meta property="og:title" content="Durgesh Patidar | Senior Project Engineer">
-  <meta property="og:description" content="Senior Project Engineer & Civil Engineer specializing in large-scale industrial projects">
-  <meta property="og:type" content="website">
-  
-  <title>Durgesh Patidar | Senior Project Engineer</title>
-
-  <style>
-    /* ==================== DESIGN TOKENS ==================== */
-    :root {
-      --bg: #faf9f6;
-      --card: rgba(255, 255, 255, 0.98);
-      --text: #3e2723;
-      --muted: #8d6e63;
-      --primary: #3e2723;
-      --accent: #5d4037;
-      --glow: rgba(62, 39, 35, 0.15);
-      --border: rgba(141, 110, 99, 0.2);
-      --success: #10b981;
-      --error: #ef4444;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    body.dark {
-      --bg: #3e2723;
-      --card: rgba(62, 39, 35, 0.98);
-      --text: #faf9f6;
-      --muted: #bcaaa4;
-      --primary: #faf9f6;
-      --accent: #d7ccc8;
-      --glow: rgba(250, 249, 246, 0.2);
-      --border: rgba(188, 170, 164, 0.4);
-    }
-
-    /* ==================== GLOBAL STYLES ==================== */
-    * {
-      box-sizing: border-box;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    /* Smooth scrolling and selection styles */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    *::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-
-    *::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    *::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 3px;
-    }
-
-    /* Background gradient animation */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 80%, rgba(62, 39, 35, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(93, 64, 55, 0.06) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: -1;
-      animation: float 30s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-10px) scale(1.01); }
-    }
-
-    /* Drafting tools background pattern */
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6bm9uZTtzdHJva2U6IzNlMjcyMztzdHJva2Utd2lkdGg6Miw7fTwvc3R5bGU+PC9kZWZzPjxnIGlkPSJjb21wYXNzIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIyMCIgY2xhc3M9ImNscy0xIi8+PGxpbmUgeDE9IjUwIiB5MT0iMzAiIHgyPSI1MCIgeTI9IjcwIiBjbGFzcz0iY2xzLTEiLz48bGluZSB4MT0iMzAiIHkyPSI1MCIgeDI9IjcwIiB5Mj0iNTAiIGNsYXNzPSJjbHMtMSIvPjwvZz48L3N2Zz4=');
-      background-size: 150px 150px;
-      background-repeat: repeat;
-      opacity: 0.03;
-      pointer-events: none;
-      z-index: -2;
-    }
-
-    /* ==================== MAIN CONTENT ==================== */
-    .main-content {
-      width: 100%;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* ==================== ANIMATIONS ==================== */
-    @keyframes modalFadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes modalZoomIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ==================== PHOTO MODAL ==================== */
-    .photo-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      z-index: 10000;
-      backdrop-filter: blur(8px);
-      animation: modalFadeIn 0.3s ease-out;
-    }
-
-    .photo-modal.active {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-
-    .modal-content {
-      position: relative;
-      width: 85vw;
-      max-width: 900px;
-      height: 70vh;
-      max-height: 700px;
-      border-radius: 20px;
-      box-shadow: 0 25px 100px rgba(0, 0, 0, 0.8);
-      transform: scale(0.8);
-      animation: modalZoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .modal-img-container {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      border-radius: 20px;
-    }
-
-    .modal-img {
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain !important;
-      border-radius: 16px;
-      display: block;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-    }
-
-    .modal-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border: none;
-      color: white;
-      font-size: 2.5rem;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-      z-index: 10001;
-    }
-
-    .modal-nav:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-50%) scale(1.1);
-    }
-
-    .modal-nav:focus-visible {
-      outline: 2px solid white;
-      outline-offset: 4px;
-    }
-
-    .modal-prev { left: 20px; }
-    .modal-next { right: 20px; }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border: none;
-      color: white;
-      font-size: 2rem;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-      z-index: 10001;
-    }
-
-    .modal-close:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: scale(1.1);
-    }
-
-    .modal-close:focus-visible {
-      outline: 2px solid white;
-      outline-offset: 4px;
-    }
-
-    .modal-counter {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1.1rem;
-      font-weight: 600;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 8px 16px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      z-index: 10001;
-    }
-
-    /* ==================== JOB MODAL ==================== */
-    .job-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.92);
-      z-index: 9999;
-      backdrop-filter: blur(12px);
-      animation: modalFadeIn 0.3s ease-out;
-    }
-
-    .job-modal.active {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-
-    .job-modal-content {
-      position: relative;
-      width: 90vw;
-      max-width: 950px;
-      max-height: 85vh;
-      border-radius: 24px;
-      box-shadow: 0 30px 120px rgba(0, 0, 0, 0.85);
-      transform: scale(0.85);
-      animation: modalZoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      background: var(--card);
-      border: 1px solid var(--border);
-      overflow-y: auto;
-    }
-
-    .job-modal-content::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .job-modal-header {
-      padding: 40px 40px 20px;
-      border-bottom: 1px solid var(--border);
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: white;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .job-modal-title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin: 0 0 12px 0;
-      line-height: 1.2;
-    }
-
-    .job-modal-meta {
-      font-size: 1.1rem;
-      opacity: 0.95;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .job-modal-body {
-      padding: 40px;
-    }
-
-    .job-responsibilities {
-      margin-top: 30px;
-    }
-
-    .job-responsibilities h4 {
-      font-size: 1.4rem;
-      color: var(--primary);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .job-responsibilities ul {
-      padding-left: 0;
-      margin: 20px 0;
-      list-style: none;
-    }
-
-    .job-responsibilities li {
-      padding: 15px 0 15px 40px;
-      position: relative;
-      margin-bottom: 12px;
-      color: var(--text);
-      font-size: 1rem;
-      line-height: 1.6;
-      background: rgba(59, 130, 246, 0.03);
-      border-radius: 12px;
-      padding-right: 20px;
-      border-left: 4px solid var(--accent);
-    }
-
-    .job-highlights {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
-
-    .highlight-card {
-      background: rgba(59, 130, 246, 0.08);
-      padding: 24px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .highlight-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(59, 130, 246, 0.2);
-      border-color: var(--accent);
-    }
-
-    .highlight-card h5 {
-      color: var(--primary);
-      font-size: 1.1rem;
-      margin: 0 0 12px 0;
-      font-weight: 700;
-    }
-
-    .job-modal-close {
-      position: absolute;
-      top: 25px;
-      right: 25px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border: none;
-      color: white;
-      font-size: 2rem;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-      z-index: 10001;
-    }
-
-    .job-modal-close:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: scale(1.1);
-    }
-
-    /* ==================== CONTACT FORM ==================== */
-    .contact-form-section {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, rgba(30, 64, 175, 0.03) 100%);
-      border-radius: 24px;
-      padding: 48px 32px;
-      margin: 40px 0;
-      border: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-form-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-    }
-
-    .contact-form-container {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .contact-form-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .contact-form-header h2 {
-      margin: 0 0 16px 0;
-      font-size: 2.2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .contact-form-header p {
-      color: var(--muted);
-      font-size: 1.1rem;
-      max-width: 500px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    .contact-form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-bottom: 32px;
-    }
-
-    .form-group {
-      position: relative;
-    }
-
-    .form-group.full-width {
-      grid-column: 1 / -1;
-    }
-
-    .form-input,
-    .form-textarea {
-      width: 100%;
-      padding: 16px 20px;
-      border: 2px solid var(--border);
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.6);
-      color: var(--text);
-      font-size: 1rem;
-      font-family: inherit;
-      transition: var(--transition);
-      backdrop-filter: blur(10px);
-    }
-
-    .form-input:focus,
-    .form-textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 0 0 4px var(--glow);
-      transform: translateY(-2px);
-    }
-
-    .form-input::placeholder,
-    .form-textarea::placeholder {
-      color: var(--muted);
-    }
-
-    .form-textarea {
-      min-height: 140px;
-      resize: vertical;
-      font-family: inherit;
-    }
-
-    .form-submit {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: white;
-      border: none;
-      padding: 18px 40px;
-      border-radius: 16px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      justify-content: center;
-    }
-
-    .form-submit:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 40px rgba(30, 64, 175, 0.3);
-    }
-
-    .form-submit:active {
-      transform: translateY(-1px);
-    }
-
-    .form-submit.loading {
-      pointer-events: none;
-      opacity: 0.8;
-    }
-
-    .form-submit.loading::after {
-      content: '';
-      width: 20px;
-      height: 20px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-top: 2px solid white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-left: 12px;
-    }
-
-    .form-message {
-      padding: 16px 20px;
-      border-radius: 12px;
-      margin-top: 20px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .form-message.success {
-      background: rgba(16, 185, 129, 0.15);
-      color: var(--success);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-
-    .form-message.error {
-      background: rgba(239, 68, 68, 0.15);
-      color: var(--error);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-    }
-
-    .contact-info {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-      backdrop-filter: blur(10px);
-    }
-
-    .contact-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(59, 130, 246, 0.15);
-      border-color: var(--accent);
-    }
-
-    .contact-icon {
-      font-size: 1.8rem;
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: white;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    /* ==================== HEADER ==================== */
-    header {
-      background: linear-gradient(135deg, rgba(30, 64, 175, 0.95), rgba(99, 102, 241, 0.9));
-      color: white;
-      padding: 80px 20px 50px;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
-      min-height: 400px;
-    }
-
-    .header-container {
-      max-width: 800px;
-      margin: auto;
-      position: relative;
-      z-index: 2;
-      padding-top: 20px;
-    }
-
-    header h1 {
-      margin: 0 0 20px 0;
-      font-size: 2.8rem;
-      font-weight: 800;
-      line-height: 1.1;
-      background: linear-gradient(135deg, white 0%, #f8fafc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    header .subtitle {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 8px 0;
-      opacity: 0.95;
-    }
-
-    header .location,
-    header .contact {
-      font-size: 1rem;
-      opacity: 0.9;
-      margin: 12px 0;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    .btn {
-      padding: 12px 24px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid transparent;
-      backdrop-filter: blur(10px);
-      cursor: pointer;
-    }
-
-    .btn:focus-visible {
-      outline: 2px solid white;
-      outline-offset: 4px;
-    }
-
-    .btn-primary {
-      background: rgba(255, 255, 255, 0.95);
-      color: var(--primary);
-      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.2);
-    }
-
-    .btn-primary:hover {
-      background: white;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 35px rgba(30, 64, 175, 0.3);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.15);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: translateY(-2px);
-    }
-
-    /* ==================== JOB CARDS ==================== */
-    .job-card {
-      background: var(--card);
-      padding: 32px;
-      margin-bottom: 24px;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-      border: 2px solid var(--border);
-      transition: var(--transition);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .job-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-
-    .job-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
-      border-color: var(--accent);
-    }
-
-    .job-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .job-card-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .job-title {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin: 0 0 12px 0;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .job-meta {
-      color: var(--muted);
-      font-size: 1rem;
-      margin: 0;
-      flex-shrink: 0;
-      font-weight: 600;
-      background: rgba(59, 130, 246, 0.08);
-      padding: 12px 20px;
-      border-radius: 12px;
-      border-left: 4px solid var(--accent);
-    }
-
-    .job-expand-icon {
-      font-size: 2rem;
-      color: var(--accent);
-      transition: var(--transition);
-      flex-shrink: 0;
-      margin-left: auto;
-    }
-
-    .job-card:hover .job-expand-icon {
-      color: var(--primary);
-      transform: scale(1.1);
-    }
-
-    /* ==================== SECTIONS & CARDS ==================== */
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 24px;
-    }
-
-    .card {
-      background: var(--card);
-      padding: 32px;
-      margin-bottom: 24px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-      border-color: rgba(59, 130, 246, 0.2);
-    }
-
-    h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 30px;
-      position: relative;
-      padding-bottom: 16px;
-    }
-
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      border-radius: 2px;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-    }
-
-    .skill-item {
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-      background: rgba(59, 130, 246, 0.03);
-    }
-
-    .skill-item:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 30px rgba(59, 130, 246, 0.15);
-    }
-
-    .skill-item strong {
-      font-size: 1rem;
-      color: var(--primary);
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    /* ==================== JOB PHOTOS GALLERY ==================== */
-    .job-photos-gallery {
-      margin-top: 40px;
-    }
-
-    .job-photos-gallery h4 {
-      font-size: 1.2rem;
-      margin: 0 0 20px 0;
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .job-photos-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-    }
-
-    .job-photo-item {
-      position: relative;
-      aspect-ratio: 4/3;
-      border-radius: 12px;
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      transition: var(--transition);
-      border: 2px solid var(--border);
-    }
-
-    .job-photo-item:hover {
-      transform: scale(1.02);
-      box-shadow: 0 15px 40px rgba(59, 130, 246, 0.25);
-      border-color: var(--accent);
-    }
-
-    .job-photo-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-
-    .job-photo-item .photo-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(30, 64, 175, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: var(--transition);
-      font-weight: 700;
-      color: white;
-      font-size: 1.1rem;
-    }
-
-    .job-photo-item:hover .photo-overlay {
-      opacity: 1;
-    }
-
-    /* ==================== FOOTER ==================== */
-    footer {
-      background: var(--card);
-      text-align: center;
-      padding: 30px 24px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      margin-top: 30px;
-    }
-
-    footer strong {
-      color: var(--text);
-    }
-
-    /* ==================== RESPONSIVE DESIGN ==================== */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-
-      header {
-        padding: 60px 20px 40px;
-        min-height: 350px;
-      }
-
-      section {
-        padding: 0 20px;
-        margin: 30px auto;
-      }
-
-      .card {
-        padding: 24px 20px;
-        margin-bottom: 20px;
-      }
-
-      .job-card {
-        padding: 24px 20px;
-      }
-
-      .job-title {
-        font-size: 1.4rem;
-      }
-
-      .project-item {
-        min-width: 280px;
-      }
-
-      .project-photos img {
-        width: 80px !important;
-        height: 80px !important;
-      }
-
-      .modal-content {
-        width: 90vw;
-        height: 75vh;
-        max-height: 75vh;
-      }
-
-      .modal-img-container {
-        padding: 30px;
-      }
-
-      .modal-nav {
-        width: 50px;
-        height: 50px;
-        font-size: 2rem;
-      }
-
-      .modal-prev {
-        left: 10px;
-      }
-
-      .modal-next {
-        right: 10px;
-      }
-
-      .modal-close {
-        width: 45px;
-        height: 45px;
-        font-size: 1.8rem;
-        top: 15px;
-        right: 15px;
-      }
-
-      .job-modal-content {
-        width: 95vw;
-        max-height: 90vh;
-      }
-
-      .job-modal-header {
-        padding: 30px 25px 15px;
-      }
-
-      .job-modal-title {
-        font-size: 1.8rem;
-      }
-
-      .job-modal-body {
-        padding: 25px;
-      }
-
-      .contact-form-section {
-        padding: 32px 20px;
-        margin: 30px 0;
-      }
-
-      .contact-form-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .contact-form-header h2 {
-        font-size: 1.8rem;
-      }
-
-      .gallery-scrollbar-container {
-        height: 6px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-
-      header {
-        padding: 50px 15px 30px;
-      }
-
-      .project-item {
-        min-width: 260px;
-      }
-
-      .project-photos img {
-        width: 70px !important;
-        height: 70px !important;
-      }
-
-      .modal-content {
-        width: 95vw;
-        height: 80vh;
-        max-height: 80vh;
-      }
-
-      .modal-img-container {
-        padding: 20px;
-      }
-
-      .job-modal-title {
-        font-size: 1.6rem;
-      }
-
-      .contact-form-section {
-        padding: 24px 16px;
-      }
-
-      .actions {
-        gap: 8px;
-      }
-
-      .btn {
-        padding: 10px 16px;
-        font-size: 0.85rem;
-      }
-    }
-  </style>
+    <title>Durgesh Patidar - Civil Engineer & Sr. Project Engineer</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional portfolio of Durgesh Patidar, Civil Engineer & Sr. Project Engineer with 6+ years of experience.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #60a5fa, var(--accent));
+            width: 0%;
+            z-index: 1001;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
+        }
+
+        :root {
+            --bg: #eff5fb;
+            --surface: rgba(255, 255, 255, 0.92);
+            --surface-strong: rgba(255, 255, 255, 0.98);
+            --text: #0f172a;
+            --muted: #475569;
+            --border: rgba(148, 163, 184, 0.22);
+            --accent: #2563eb;
+            --accent-soft: rgba(59, 130, 246, 0.16);
+            --accent-strong: #1d4ed8;
+            --header-bg: rgba(15, 23, 42, 0.9);
+            --card-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+            --button-bg: #2563eb;
+            --button-hover: #1d4ed8;
+            --hero-bg1: rgba(37, 99, 235, 0.16);
+            --hero-bg2: #eff5fb;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(180deg, #eff5fb 0%, var(--bg) 45%, #f8fafc 100%);
+            min-height: 100vh;
+        }
+
+        body.dark-mode {
+            --bg: #0c1727;
+            --surface: rgba(15, 23, 42, 0.78);
+            --surface-strong: rgba(15, 23, 42, 0.92);
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --border: rgba(148, 163, 184, 0.16);
+            --accent: #60a5fa;
+            --accent-soft: rgba(96, 165, 250, 0.16);
+            --accent-strong: #38bdf8;
+            --header-bg: rgba(15, 23, 42, 0.95);
+            --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.32);
+            --button-bg: #3b82f6;
+            --button-hover: #2563eb;
+            --hero-bg1: rgba(37, 99, 235, 0.22);
+            --hero-bg2: #0f172a;
+            background: linear-gradient(180deg, #08101f 0%, #0c1727 45%, #111827 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--header-bg);
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
+            backdrop-filter: blur(14px);
+            transition: transform 0.3s ease, background 0.3s ease, padding 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 1rem 0;
+            background: rgba(15, 23, 42, 0.96);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+        }
+
+        .nav-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.25s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active-link {
+            color: var(--accent);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active-link::after {
+            width: 100%;
+        }
+
+        .header .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            color: #e2e8f0;
+            cursor: pointer;
+            transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+            font-size: 1rem;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.16);
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.12);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 140px 0 90px;
+            overflow: hidden;
+            background: radial-gradient(circle at top center, var(--hero-bg1), transparent 32%),
+                        linear-gradient(135deg, var(--hero-bg2) 0%, var(--bg) 100%);
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at bottom right, var(--hero-bg1), transparent 30%),
+                        radial-gradient(circle at top left, var(--hero-bg1), transparent 20%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 820px;
+            margin: 0 auto;
+            animation: fadeInUp 0.9s ease both;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.05;
+            text-shadow: 0 16px 40px rgba(160, 174, 192, 0.12);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin-bottom: 3rem;
+            line-height: 1.75;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: 18px;
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Skill Bars */
+        .skill-bar-container {
+            margin-top: 1.5rem;
+        }
+
+        .skill-bar-item {
+            margin-bottom: 1.25rem;
+        }
+
+        .skill-bar-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--border);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #60a5fa);
+            width: 0%;
+            transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 9999px;
+            box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+        }
+
+        .skill-bar-fill.animated {
+            width: var(--width);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 26px 50px rgba(37, 99, 235, 0.18);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(40px);
+            visibility: hidden;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .section.section-alt {
+            background: var(--surface-strong);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .skill-card,
+        .experience-item,
+        .education-item,
+        .contact-item,
+        .stat-item {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .skill-card.visible,
+        .experience-item.visible,
+        .education-item.visible,
+        .contact-item.visible,
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--muted);
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title,
+        .section-subtitle {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.75;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--surface-strong);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 30px 70px rgba(66, 153, 225, 0.18);
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            transition: transform 0.4s ease;
+        }
+
+        .profile-image:hover {
+            transform: translateY(-6px);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 2%;
+            display: block;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(14px);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 55px rgba(15, 23, 42, 0.14);
+        }
+
+        .skill-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-list li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Staggered Card Animations */
+        .skill-card:nth-child(1) { transition: all 0.6s ease 0s; }
+        .skill-card:nth-child(2) { transition: all 0.6s ease 0.1s; }
+        .skill-card:nth-child(3) { transition: all 0.6s ease 0.2s; }
+        .skill-card:nth-child(4) { transition: all 0.6s ease 0.3s; }
+
+        .experience-item:nth-child(2) { transition: all 0.6s ease 0s; }
+        .experience-item:nth-child(3) { transition: all 0.6s ease 0.1s; }
+        .experience-item:nth-child(4) { transition: all 0.6s ease 0.2s; }
+        .experience-item:nth-child(5) { transition: all 0.6s ease 0.3s; }
+
+        .education-item:nth-child(1) { transition: all 0.6s ease 0s; }
+        .education-item:nth-child(2) { transition: all 0.6s ease 0.2s; }
+
+        /* Experience Section */
+        .experience-item {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--accent);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(12px);
+        }
+
+        .experience-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 55px rgba(15, 23, 42, 0.14);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .company-details {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .company-logo {
+            width: 100px;
+            height: 100px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: var(--surface);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.12);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .company-logo img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            display: block;
+        }
+
+        body.dark-mode .company-logo {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .experience-date {
+            font-size: 0.9rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .experience-company {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-description {
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .experience-achievements {
+            list-style: none;
+        }
+
+        .experience-achievements li {
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-achievements li::before {
+            content: "✓";
+            color: #48bb78;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-images img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .project-images img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-item {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(14px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 50px rgba(15, 23, 42, 0.14);
+        }
+
+        .education-degree {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-institution {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-year {
+            font-size: 0.9rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-description {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background: var(--surface);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(14px);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 26px 60px rgba(0, 0, 0, 0.14);
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .contact-value a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--button-bg);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 16px 30px rgba(66, 153, 225, 0.18);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(66, 153, 225, 0.22);
+        }
+
+        .btn:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(99, 179, 237, 0.8);
+            color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(99, 179, 237, 0.14);
+            color: white;
+        }
+
+        .btn-secondary:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: #a0aec0;
+            padding: 3rem 0 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-section p {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 1rem 0;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                padding: 0.9rem 1.5rem;
+                font-size: 0.95rem;
+                margin: 0.25rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Photo Modal -->
-  <div class="photo-modal" id="photoModal" role="dialog" aria-label="Image viewer modal" aria-hidden="true">
-    <button class="modal-close" id="modalClose" aria-label="Close image viewer">&times;</button>
-    <button class="modal-nav modal-prev" id="modalPrev" aria-label="Previous image">&#8249;</button>
-    <button class="modal-nav modal-next" id="modalNext" aria-label="Next image">&#8250;</button>
-    <div class="modal-content">
-      <div class="modal-img-container">
-        <img class="modal-img" id="modalImg" src="" alt="Project Image">
-      </div>
-    </div>
-    <div class="modal-counter" id="modalCounter" aria-live="polite"></div>
-  </div>
-
-  <!-- Job Experience Modal -->
-  <div class="job-modal" id="jobModal" role="dialog" aria-label="Job experience details" aria-hidden="true">
-    <button class="job-modal-close" id="jobModalClose" aria-label="Close job details">&times;</button>
-    <div class="job-modal-content" id="jobModalContent"></div>
-  </div>
-
-  <div class="main-content">
     <!-- Header -->
-    <header role="banner">
-      <div class="header-container">
-        <h1>Durgesh Patidar</h1>
-        <p class="subtitle">Senior Project Engineer & Civil Engineer</p>
-        <p class="location">📍 Sundrel, Dhar, Madhya Pradesh, India</p>
-        <p class="contact">📞 +91-7389871595 | 📧 Durgeshpatidarce@gmail.com</p>
-
-        <div class="actions">
-          <a class="btn btn-primary" href="Durgesh_Patidar_CV.pdf" target="_blank" rel="noopener noreferrer">
-            📄 Download CV
-          </a>
-          <a class="btn btn-primary" href="https://www.linkedin.com/in/patidar-dees" target="_blank" rel="noopener noreferrer">
-            💼 LinkedIn
-          </a>
-          <a class="btn btn-primary" href="https://wa.me/917389871595" target="_blank" rel="noopener noreferrer">
-            💬 Contact
-          </a>
-          <button class="btn btn-secondary" id="darkModeBtn" aria-label="Toggle dark mode">
-            🌙 Dark Mode
-          </button>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Durgesh Patidar</div>
+                <div class="nav-actions">
+                    <nav class="nav-links">
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#skills" class="nav-link">Skills</a>
+                        <a href="#experience" class="nav-link">Experience</a>
+                        <a href="#education" class="nav-link">Education</a>
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </nav>
+                    <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+                </div>
+            </div>
         </div>
-      </div>
     </header>
 
-    <!-- Professional Summary -->
-    <section>
-      <h2>Professional Summary</h2>
-      <div class="card fade-in">
-        <p>Senior Project Engineer and Civil Engineer with extensive experience delivering <strong>large-scale industrial projects exceeding $100M in cumulative value</strong>. Specialized in industrial construction execution, project planning, billing, quantity surveying, and commercial management, consistently improving operational efficiency by up to <strong>30%</strong>. Proven track record of leading cross-functional teams of 10+ professionals to meet and exceed project milestones, compliance requirements, and stakeholder KPIs.</p>
-      </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Durgesh Patidar</h1>
+                <p class="hero-subtitle">Civil Engineer & Sr. Project Engineer</p>
+                <p class="hero-description">
+                    Results-driven professional with M.Tech and 6+ years of experience in Industrial Project Execution, Project Billing, Change Control, Cashflow Management and Cost Control.
+Known for data‑driven execution and effective stakeholder management.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">$100M+</div>
+                        <div class="stat-label">Project Value Delivered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Milestone Compliance</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Major Projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Professional Experience -->
-    <section>
-      <h2>Professional Experience</h2>
-
-      <div class="job-card fade-in" data-job="0" role="button" tabindex="0">
-        <div class="job-card-header">
-          <div>
-            <h3 class="job-title">Senior Project Engineer</h3>
-            <p class="job-meta">Facilities And Building Solutions Private Limited<br>Dec 2024 – Present</p>
-          </div>
-          <div class="job-expand-icon" aria-hidden="true">➤</div>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Professional Overview</h3>
+                    <p>
+                        I am a dedicated Civil Engineer and Sr. Project Engineer with extensive experience
+                        in managing complex projects across multiple industries. My expertise spans project planning & execution,
+                        stakeholder management, cost management and technical implementation.
+                    </p>
+                    <p>
+                        Throughout my career, I have successfully delivered projects worth over $100 million,
+                        consistently achieving 98% milestone compliance and driving operational efficiencies
+                        through strategic planning and execution.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <div class="profile-image">
+                        <img src="profile/profile.jpg" alt="Profile photo of Durgesh Patidar">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="job-card fade-in" data-job="1" role="button" tabindex="0">
-        <div class="job-card-header">
-          <div>
-            <h3 class="job-title">Project In-Charge</h3>
-            <p class="job-meta">Chandrika Power Private Limited<br>Dec 2022 – Nov 2026</p>
-          </div>
-          <div class="job-expand-icon" aria-hidden="true">➤</div>
-        </div>
-      </div>
-
-      <div class="job-card fade-in" data-job="2" role="button" tabindex="0">
-        <div class="job-card-header">
-          <div>
-            <h3 class="job-title">Site In-Charge</h3>
-            <p class="job-meta">Mekalsuta Sugar Private Limited<br>Dec 2021 – Nov 2022</p>
-          </div>
-          <div class="job-expand-icon" aria-hidden="true">➤</div>
-        </div>
-      </div>
-
-      <div class="job-card fade-in" data-job="3" role="button" tabindex="0">
-        <div class="job-card-header">
-          <div>
-            <h3 class="job-title">🔧 Site Engineer</h3>
-            <p class="job-meta">Almighty Associates<br>Jul 2020 – Oct 2021</p>
-          </div>
-          <div class="job-expand-icon" aria-hidden="true">➤</div>
-        </div>
-      </div>
-
-      <div class="job-card fade-in" data-job="4" role="button" tabindex="0">
-        <div class="job-card-header">
-          <div>
-            <h3 class="job-title">🔧 Site Engineer</h3>
-            <p class="job-meta">Bhupendra Singh & Associates<br>Jul 2019 – Mar 2020</p>
-          </div>
-          <div class="job-expand-icon" aria-hidden="true">➤</div>
-        </div>
-      </div>
     </section>
 
-    <!-- Education -->
-    <section>
-      <h2>Education</h2>
-
-      <div class="card fade-in">
-        <h3>🎓 Master of Technology (M.Tech) — Structural Engineering</h3>
-        <p class="meta" style="color: var(--muted); margin: 8px 0;">Sushila Devi Bansal College of Engineering (RGPV), Indore | 2024</p>
-        <ul>
-          <li>CGPA: <strong>8.44</strong></li>
-          <li>Advanced practice semester completed with merit</li>
-          <li>Final dissertation CGPA: <strong>9.00</strong></li>
-          <li>Dissertation: Experimental Investigation on Marble Dust as Partial Replacement of Cement</li>
-        </ul>
-      </div>
-
-      <div class="card fade-in">
-        <h3>🎓 Bachelor of Engineering (B.E) — Civil Engineering</h3>
-        <p class="meta" style="color: var(--muted); margin: 8px 0;">SDBCE (RGPV), Indore | 2019</p>
-        <ul>
-          <li>CGPA: <strong>6.67</strong></li>
-        </ul>
-      </div>
+    <!-- Skills Section -->
+    <section id="skills" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Core Competencies</h2>
+            <p class="section-subtitle">
+                Technical and professional skills developed through years of hands-on experience
+            </p>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3 class="skill-title">Project Execution</h3>
+                    <ul class="skill-list">
+                        <li>Structural Execution</li>
+                        <li>Resilience & Adaptability</li>
+                        <li>Risk Management & Mitigation</li>
+                        <li>control & Coordination</li>
+                    </ul>
+                    <div class="skill-bar-container">
+                        <span class="skill-bar-label">Proficiency</span>
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill" data-width="95%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Technical Engineering</h3>
+                    <ul class="skill-list">
+                        <li>AutoCAD (Drafting & Structural Drawings)</li>
+                        <li>BIM 360 Autocad</li>
+                        <li>Technical Documentation</li>
+                    </ul>
+                    <div class="skill-bar-container">
+                        <span class="skill-bar-label">Proficiency</span>
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill" data-width="90%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Business Systems</h3>
+                    <ul class="skill-list">
+                        <li>ERP Implementation</li>
+                        <li>Process Optimization</li>
+                        <li>KPI Dashboard Development</li>
+                        <li>Data Analysis & Reporting</li>
+                    </ul>
+                    <div class="skill-bar-container">
+                        <span class="skill-bar-label">Proficiency</span>
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill" data-width="88%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Industry Knowledge</h3>
+                    <ul class="skill-list">
+                        <li>CAPEX Project Delivery</li>
+                        <li>Manufacturing Operations</li>
+                        <li>Quality Management Systems</li>
+                        <li>Regulatory Compliance</li>
+                    </ul>
+                    <div class="skill-bar-container">
+                        <span class="skill-bar-label">Proficiency</span>
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill" data-width="92%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Key Achievements -->
-    <section>
-      <h2>Key Achievements</h2>
-      <div class="card fade-in">
-        <ul>
-          <li>✅ Achieved project cost savings through optimized procurement strategies</li>
-          <li>✅ Applied innovative execution approaches in ethanol distillery projects</li>
-          <li>✅ Reduced project risk exposure by <strong>20%</strong> using AI-driven analysis</li>
-          <li>✅ Delivered structured presentations on cash-flow tracking</li>
-          <li>✅ Achieved <strong>95% issue-resolution rate</strong> on PepsiCo project</li>
-        </ul>
-      </div>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">
+                A track record of successful project delivery and operational excellence
+            </p>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company-details">
+                        <div class="company-logo">
+                            <img src="logos/FABS.jpg" alt="FABS logo">
+                        </div>
+                        <div>
+                            <h3 class="experience-title">Sr. Project Engineer / Sr. Billing Engineer</h3>
+                            <div class="experience-company">Facilities And Building Solutions (FABS) – PEPSICO | Ujjain (M.P.)</div>
+                        </div>
+                    </div>
+                    <div class="experience-date">Dec 2024 – Present</div>
+                </div>
+                <p class="experience-description">
+                    Led CSA & MEP project billing with monthly cashflow tracking, monitoring accruals & actual, Handled detailed quantity surveying and end‑to‑end change order management with vendor coordination.
+                </p>
+                <ul class="experience-achievements">
+                    <li>Lead CSA and MEP project billing and monthly cash-flow management</li>
+                    <li>Monitor accruals versus actual costs for financial visibility</li>
+                    <li>Perform detailed quantity surveying and maintain billing trackers</li>
+                    <li>Manage change orders end-to-end with vendor coordination</li>
+                </ul>
+                <div class="project-images">
+                    <img src="images/pepsico-1.JPG" alt="PepsiCo project 1">
+                    <img src="images/pepsico-2.JPG" alt="PepsiCo project 2">
+                    <img src="images/pepsico-3.JPG" alt="PepsiCo project 3">
+                    <img src="images/pepsico-4.JPG" alt="PepsiCo project 4">
+                    <img src="images/pepsico-5.JPG" alt="PepsiCo project 5">
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company-details">
+                        <div class="company-logo">
+                            <img src="logos/CPPL.jpg" alt="CCPL logo">
+                        </div>
+                        <div>
+                            <h3 class="experience-title">Project In-charge</h3>
+                            <div class="experience-company">Chandrika Power Private Limited | Nalanda (M.P.)</div>
+                        </div>
+                    </div>
+                    <div class="experience-date">Dec 2022 – Nov 2024</div>
+                </div>
+                <p class="experience-description">
+                    Delivered a 60 KL ethanol distillery ($9M CAPEX) from initiation to commissioning with full responsibility for execution, Drove KPI tracking, risk mitigation, design coordination, and procurement monitoring.
+                </p>
+                <ul class="experience-achievements">
+                    <li>Led end-to-end delivery of 60 KL ethanol distillery ($9M CAPEX)</li>
+                    <li>Delivered facility from ground-breaking through commissioning</li>
+                    <li>Established KPIs and implemented risk-mitigation strategies</li>
+                    <li>Managed design coordination and procurement monitoring</li>
+                </ul>
+                <div class="project-images">
+                    <img src="images/ethanol60-1.JPG" alt="CPPL project 1">
+                    <img src="images/ethanol60-2.JPG" alt="CPPL project 2">
+                    <img src="images/ethanol60-3.JPG" alt="CPPL project 3">
+                    <img src="images/ethanol60-4.JPG" alt="CPPL project 4">
+                    <img src="images/ethanol60-5.JPG" alt="CPPL project 5">
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company-details">
+                        <div class="company-logo">
+                            <img src="logos/MSPL.jpg" alt="MSPL logo">
+                        </div>
+                        <div>
+                            <h3 class="experience-title">Site In-charge</h3>
+                            <div class="experience-company">Mekalsuta Sugar Private Limited | Badwani (M.P.)</div>
+                        </div>
+                    </div>
+                    <div class="experience-date">Dec 2021 – Nov 2022</div>
+                </div>
+                <p class="experience-description">
+                    Managed site execution of a 75/100 KL ethanol distillery ($11.1M CAPEX), resolving technical challenges and coordinating vendors..
+                </p>
+                <ul class="experience-achievements">
+                    <li>Supervised 75/100 KL ethanol distillery project ($11.1M CAPEX)</li>
+                    <li>Ensured execution per approved drawings and standards</li>
+                    <li>Resolved technical challenges and coordinated vendors</li>
+                </ul>
+                <div class="project-images">
+                    <img src="images/ethanol100-1.JPG" alt="MSPL project 1">
+                    <img src="images/ethanol100-2.JPG" alt="MSPL project 2">
+                    <img src="images/ethanol100-3.JPG" alt="MSPL project 3">
+                    <img src="images/ethanol100-4.JPG" alt="MSPL project 4">
+                    <img src="images/ethanol100-5.JPG" alt="MSPL project 5">
+                </div>
+            </div>
+
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company-details">
+                        <div class="company-logo">
+                            <img src="logos/AA.jpg" alt="AA logo">
+                        </div>
+                        <div>
+                            <h3 class="experience-title">Site Engineer</h3>
+                            <div class="experience-company">Almighty Associate | Indore (M.P.)</div>
+                        </div>
+                    </div>
+                    <div class="experience-date">July 2020 – Oct 2021</div>
+                </div>
+                <p class="experience-description">
+                    Managed construction activities in line with drawings and codes, collaborated with architects and engineers, and maintained quality through regular inspections.
+                </p>
+                <ul class="experience-achievements">
+                    <li>Supervised construction activities per drawings and codes</li>
+                    <li>Coordinated with architects and design engineers</li>
+                    <li>Performed quality control inspections</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company-details">
+                        <div class="company-logo">
+                            <img src="logos/BS&A.jpg" alt="BS&A logo">
+                        </div>
+                        <div>
+                            <h3 class="experience-title">Site Engineer</h3>
+                            <div class="experience-company">Bhupendra Singh & Associates | Indore (M.P.)</div>
+                        </div>
+                    </div>
+                    <div class="experience-date">July 2019 – Mar 2020</div>
+                </div>
+                <p class="experience-description">
+                    Expertise in structural supervision, and quality control. Skilled in BOQs, cost estimation, billing, and valuation. Responsibilities include design coordination, structural execution, project billing, and property valuation across construction projects.
+                </p>
+                <ul class="experience-achievements">
+                    <li>Skilled in structural execution, site supervision, and quality control</li>
+                    <li>Experienced in valuation, BOQ preparation, cost estimation, and billing</li>
+                    <li>Responsible for design coordination, structural works, and valuation</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
-    <!-- Core Skills -->
-    <section>
-      <h2>Core Skills & Expertise</h2>
-      <div class="skills-grid">
-        <div class="skill-item fade-in">
-          <strong>📊 Project Billing & QS</strong>
-          <span>Advanced quantity surveying and billing management</span>
+    <!-- Education Section -->
+    <section id="education" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">
+                Academic foundation supporting professional expertise
+            </p>
+            <div class="education-grid">
+                <div class="education-item">
+                    <h3 class="education-degree">Master of Technology (M-Tech) Structural Engineering</h3>
+                    <div class="education-institution">Sudhila Devi Bansal College of Engineering (RGPV), Indore (M.P.)</div>
+                    <div class="education-year">2021-2024</div>
+                    <p>CGPA - <strong>8.44</strong></p>
+                    <p>Final dissertation CGPA: <strong>9.00</strong></p>
+                    <p>Dissertation: Experimental Investigation on Marble Dust as Partial Replacement of Cement</p>
+                </div>
+                <div class="education-item">
+                    <h3 class="education-degree">Bachelor of Engineering (B.E.) Civil Engineering</h3>
+                    <div class="education-institution">Sudhila Devi Bansal College of Engineering (RGPV), Indore (M.P.)</div>
+                    <div class="education-year">2019</div>
+                    <p>CGPA: <strong>6.67</strong></p>
+                    <p>Dissertation: Design and Planning for Water Supply and Distribution System in Rural Area at Umriya Village, Indore (M.P.)</p>
+                </div>
+            </div>
         </div>
-        <div class="skill-item fade-in">
-          <strong>💰 Change Order Management</strong>
-          <span>End-to-end change order processing</span>
-        </div>
-        <div class="skill-item fade-in">
-          <strong>🏗️ Civil & Structural</strong>
-          <span>Execution and quality control</span>
-        </div>
-        <div class="skill-item fade-in">
-          <strong>🎯 Project Controls</strong>
-          <span>KPIs, scheduling, and risk management</span>
-        </div>
-        <div class="skill-item fade-in">
-          <strong>🤝 Stakeholder Management</strong>
-          <span>Client and vendor coordination</span>
-        </div>
-        <div class="skill-item fade-in">
-          <strong>📈 Data Analysis</strong>
-          <span>Reporting and financial analysis</span>
-        </div>
-      </div>
     </section>
 
-    <!-- Languages -->
-    <section>
-      <h2>Languages</h2>
-      <div class="card fade-in" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-        <div style="text-align: center; padding: 20px;">
-          <div style="font-size: 1.8rem; margin-bottom: 12px;">🇺🇸</div>
-          <h4 style="color: var(--primary); margin: 0 0 8px 0;">English</h4>
-          <p style="color: var(--accent); font-weight: 600; margin: 0;">Professional Working Proficiency</p>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="contact-title">Let's Connect</h2>
+                <p class="contact-description">
+                    I'm always interested in discussing new opportunities and innovative projects.
+                    Feel free to reach out to discuss how we can work together.
+                </p>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-label">Location</div>
+                        <div class="contact-value">Indore, India</div>
+                            <a href="https://maps.app.goo.gl/hixmxxGy3L6JxGUNA">📍</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">+91 7389871595</div>
+                            <a href="https://wa.me/917389871595">💬</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">
+                            <a href="mailto:durgeshpatidarce@gmail.com">durgeshpatidarce@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value">
+                            <a href="https://www.linkedin.com/in/patidar-dees" target="_blank">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <a href="CV/Durgesh_CV.pdf" download class="btn">📥 Download CV</a>
+                    <a href="mailto:durgeshpatidarce@gmail.com" class="btn">Send Message</a>
+                    <a href="https://www.linkedin.com/in/patidar-dees" target="_blank" class="btn btn-secondary">Connect on LinkedIn</a>
+                </div>
+            </div>
         </div>
-        <div style="text-align: center; padding: 20px;">
-          <div style="font-size: 1.8rem; margin-bottom: 12px;">🇮🇳</div>
-          <h4 style="color: var(--primary); margin: 0 0 8px 0;">Hindi</h4>
-          <p style="color: var(--accent); font-weight: 600; margin: 0;">Native / Bilingual Proficiency</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Form Section -->
-    <section class="contact-form-section fade-in">
-      <div class="contact-form-container">
-        <div class="contact-form-header">
-          <h2>📧 Get In Touch</h2>
-          <p>Have a project opportunity or want to discuss collaboration? I'd love to hear from you. Fill out the form below or contact me directly.</p>
-        </div>
-
-        <form id="contactForm" novalidate>
-          <div class="contact-form-grid">
-            <div class="form-group">
-              <input type="text" name="name" class="form-input" placeholder="Your Name *" required aria-label="Your name">
-            </div>
-
-            <div class="form-group">
-              <input type="email" name="email" class="form-input" placeholder="Your Email *" required aria-label="Your email">
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="subject" class="form-input" placeholder="Subject *" required aria-label="Message subject">
-            </div>
-
-            <div class="form-group full-width">
-              <textarea name="message" class="form-textarea" placeholder="Your Message *" required aria-label="Your message"></textarea>
-            </div>
-          </div>
-
-          <button type="submit" class="form-submit" id="formSubmit">
-            🚀 Send Message
-          </button>
-        </form>
-
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">📞</div>
-            <div>
-              <strong>+91-7389871595</strong><br>
-              <a href="tel:+917389871595" style="color: var(--accent); text-decoration: none;">Call Now</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📧</div>
-            <div>
-              <strong>Durgeshpatidarce@gmail.com</strong><br>
-              <a href="mailto:Durgeshpatidarce@gmail.com" style="color: var(--accent); text-decoration: none;">Send Email</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div>
-              <strong>Sundrel, Dhar</strong><br>
-              <span style="color: var(--muted);">Madhya Pradesh, India</span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">💼</div>
-            <div>
-              <strong>LinkedIn</strong><br>
-              <a href="https://www.linkedin.com/in/patidar-dees" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none;">Connect Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Footer -->
-    <footer role="contentinfo">
-      <div>
-        <strong>© 2026 Durgesh Patidar</strong><br>
-        <span style="font-size: 0.95rem;">Senior Project Engineer & Civil Engineer</span>
-      </div>
-      <div style="margin-top: 16px; opacity: 0.7;">
-        Built with precision for engineering excellence
-      </div>
-    </footer>
-  </div>
-
-  <!-- JavaScript -->
-  <script>
-    // ==================== CONFIGURATION & CONSTANTS ====================
-    const CONFIG = {
-      TRANSITION_DURATION: 300,
-      FORM_MESSAGE_TIMEOUT: 5000,
-    };
-
-    // ==================== JOB EXPERIENCES DATA ====================
-    const JOB_EXPERIENCES = [
-      {
-        title: '📊 Senior Project Engineer',
-        company: 'Facilities And Building Solutions Private Limited',
-        duration: 'Dec 2024 – Present',
-        location: 'Client: PepsiCo India Holdings Pvt. Ltd.',
-        responsibilities: [
-          'Lead CSA and MEP project billing and monthly cash-flow management',
-          'Monitor accruals versus actual costs for financial visibility',
-          'Perform detailed quantity surveying and maintain billing trackers',
-          'Manage change orders end-to-end with vendor coordination'
-        ],
-        photos: [
-          { src: 'images/pepsico-1.jpg', alt: 'PepsiCo Facility Construction Phase 1' },
-          { src: 'images/pepsico-2.jpg', alt: 'PepsiCo Facility Steel Structure' },
-          { src: 'images/pepsico-3.jpg', alt: 'PepsiCo Facility MEP Installation' },
-          { src: 'images/pepsico-4.jpg', alt: 'PepsiCo Facility Interior Works' },
-          { src: 'images/pepsico-5.jpg', alt: 'PepsiCo Facility Final Commissioning' }
-        ],
-        highlights: [
-          {
-            title: '💰 Financial Oversight',
-            description: 'Complete control over project billing and cash-flow tracking for PepsiCo facility'
-          },
-          {
-            title: '📊 Quantity Surveying',
-            description: 'Expert-level QS with advanced billing tracker implementation'
-          }
-        ]
-      },
-      {
-        title: '🏗️ Project In-Charge',
-        company: 'Chandrika Power Private Limited',
-        duration: 'Dec 2022 – Nov 2026',
-        location: 'Bihar Sharif, India',
-        responsibilities: [
-          'Led end-to-end delivery of 60 KL ethanol distillery ($9M CAPEX)',
-          'Delivered facility from ground-breaking through commissioning',
-          'Established KPIs and implemented risk-mitigation strategies',
-          'Managed design coordination and procurement monitoring'
-        ],
-        photos: [
-          { src: 'images/ethanol60-1.jpg', alt: 'Ethanol 60KL Foundation Work' },
-          { src: 'images/ethanol60-2.jpg', alt: 'Ethanol 60KL Distillation Columns' },
-          { src: 'images/ethanol60-3.jpg', alt: 'Ethanol 60KL Piping Installation' }
-        ],
-        highlights: [
-          {
-            title: '🏭 Complete Project Delivery',
-            description: 'Full lifecycle management of $9M ethanol distillery project'
-          },
-          {
-            title: '🎯 Risk Management',
-            description: 'Implemented comprehensive KPIs and risk mitigation strategies'
-          }
-        ]
-      },
-      {
-        title: '👷 Site In-Charge',
-        company: 'Mekalsuta Sugar Private Limited',
-        duration: 'Dec 2021 – Nov 2022',
-        location: 'Badwani, India',
-        responsibilities: [
-          'Supervised 75/100 KL ethanol distillery project ($11.1M CAPEX)',
-          'Ensured execution per approved drawings and standards',
-          'Resolved technical challenges and coordinated vendors'
-        ],
-        photos: [
-          { src: 'images/ethanol100-1.jpg', alt: 'Ethanol 100KL Site Preparation' },
-          { src: 'images/ethanol100-2.jpg', alt: 'Ethanol 100KL Structural Steel' },
-          { src: 'images/ethanol100-3.jpg', alt: 'Ethanol 100KL Equipment Installation' },
-          { src: 'images/ethanol100-4.jpg', alt: 'Ethanol 100KL Control Room' },
-          { src: 'images/ethanol100-5.jpg', alt: 'Ethanol 100KL Commissioning' }
-        ],
-        highlights: [
-          {
-            title: '🏗️ Large Scale Supervision',
-            description: 'Oversaw $11.1M ethanol distillery construction from start to finish'
-          },
-          {
-            title: '🔧 Technical Problem Solving',
-            description: 'Resolved complex technical challenges during execution'
-          }
-        ]
-      },
-      {
-        title: '🔧 Site Engineer',
-        company: 'Almighty Associates',
-        duration: 'Jul 2020 – Oct 2021',
-        location: 'Indore, India',
-        responsibilities: [
-          'Supervised construction activities per drawings and codes',
-          'Coordinated with architects and design engineers',
-          'Performed quality control inspections'
-        ]
-      },
-      {
-        title: '🔧 Site Engineer',
-        company: 'Bhupendra Singh & Associates',
-        duration: 'Jul 2019 – Mar 2020',
-        location: 'Indore, India',
-        responsibilities: [
-          'Skilled in structural execution, site supervision, and quality control',
-          'Experienced in valuation, BOQ preparation, cost estimation, and billing',
-          'Responsible for design coordination, structural works, and valuation'
-        ],
-        highlights: [
-          {
-            title: '📐 Structural Expertise',
-            description: 'Specialized in structural execution and quality control'
-          },
-          {
-            title: '💼 Commercial Skills',
-            description: 'Proficient in BOQ, valuation, and cost estimation'
-          }
-        ]
-      }
-    ];
-
-    // ==================== INTERSECTION OBSERVER ====================
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    // ==================== PHOTO MODAL CLASS ====================
-    class PhotoModal {
-      constructor() {
-        this.modal = document.getElementById('photoModal');
-        this.modalImg = document.getElementById('modalImg');
-        this.modalClose = document.getElementById('modalClose');
-        this.modalPrev = document.getElementById('modalPrev');
-        this.modalNext = document.getElementById('modalNext');
-        this.modalCounter = document.getElementById('modalCounter');
-
-        this.currentImageIndex = 0;
-        this.currentImages = [];
-        this.isOpen = false;
-        this.bodyOverflow = '';
-
-        this.init();
-      }
-
-      init() {
-        this.modalClose.addEventListener('click', (e) => {
-          e.stopPropagation();
-          this.close();
-        });
-
-        this.modal.addEventListener('click', (e) => {
-          if (e.target === this.modal) {
-            this.close();
-          }
-        });
-
-        this.modalPrev.addEventListener('click', (e) => {
-          e.stopPropagation();
-          this.prevImage();
-        });
-
-        this.modalNext.addEventListener('click', (e) => {
-          e.stopPropagation();
-          this.nextImage();
-        });
-
-        document.addEventListener('keydown', this.handleKeydown.bind(this));
-        this.initImageHandlers();
-      }
-
-      initImageHandlers() {
-        document.addEventListener('click', (e) => {
-          const img = e.target.closest('.project-photos img');
-          if (img && !this.isOpen) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.open(img);
-          }
-        });
-      }
-
-      handleKeydown(e) {
-        if (!this.isOpen) return;
-
-        switch(e.key) {
-          case 'Escape':
-            e.preventDefault();
-            this.close();
-            break;
-          case 'ArrowLeft':
-            e.preventDefault();
-            this.prevImage();
-            break;
-          case 'ArrowRight':
-            e.preventDefault();
-            this.nextImage();
-            break;
-        }
-      }
-
-      open(clickedImg) {
-        const projectPhotos = clickedImg.closest('.project-photos');
-        this.currentImages = Array.from(projectPhotos.querySelectorAll('img'));
-        this.currentImageIndex = this.currentImages.indexOf(clickedImg);
-
-        this.showImage();
-        this.modal.classList.add('active');
-        this.modal.setAttribute('aria-hidden', 'false');
-        this.isOpen = true;
-
-        this.bodyOverflow = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
-      }
-
-      showImage() {
-        if (this.currentImages.length === 0) return;
-
-        const img = this.currentImages[this.currentImageIndex];
-        this.modalImg.src = img.src;
-        this.modalImg.alt = img.alt || 'Project Image';
-        this.updateCounter();
-      }
-
-      nextImage() {
-        if (this.currentImages.length <= 1) return;
-        this.currentImageIndex = (this.currentImageIndex + 1) % this.currentImages.length;
-        this.showImage();
-      }
-
-      prevImage() {
-        if (this.currentImages.length <= 1) return;
-        this.currentImageIndex = (this.currentImageIndex - 1 + this.currentImages.length) % this.currentImages.length;
-        this.showImage();
-      }
-
-      updateCounter() {
-        this.modalCounter.textContent = `${this.currentImageIndex + 1} / ${this.currentImages.length}`;
-      }
-
-      close() {
-        this.modal.classList.remove('active');
-        this.modal.setAttribute('aria-hidden', 'true');
-        this.isOpen = false;
-
-        setTimeout(() => {
-          document.body.style.overflow = this.bodyOverflow;
-          this.modalImg.src = '';
-          this.currentImages = [];
-        }, CONFIG.TRANSITION_DURATION);
-      }
-    }
-
-    // ==================== JOB MODAL CLASS ====================
-    class JobModal {
-      constructor() {
-        this.modal = document.getElementById('jobModal');
-        this.content = document.getElementById('jobModalContent');
-        this.closeBtn = document.getElementById('jobModalClose');
-        this.isOpen = false;
-        this.bodyOverflow = '';
-
-        this.init();
-      }
-
-      init() {
-        this.closeBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          this.close();
-        });
-
-        this.modal.addEventListener('click', (e) => {
-          if (e.target === this.modal) {
-            this.close();
-          }
-        });
-
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && this.isOpen) {
-            this.close();
-          }
-        });
-      }
-
-      open(jobData) {
-        this.content.innerHTML = this.generateJobContent(jobData);
-        this.modal.classList.add('active');
-        this.modal.setAttribute('aria-hidden', 'false');
-        this.isOpen = true;
-        document.body.style.overflow = 'hidden';
-      }
-
-      generateJobContent(job) {
-        return `
-          <div class="job-modal-header">
-            <div>
-              <h1 class="job-modal-title">${this.escapeHtml(job.title)}</h1>
-              <p class="job-modal-meta">${this.escapeHtml(job.company)} | ${this.escapeHtml(job.duration)} | ${this.escapeHtml(job.location)}</p>
-            </div>
-          </div>
-          <div class="job-modal-body">
-            <div class="job-responsibilities">
-              <h4>📋 Key Responsibilities</h4>
-              <ul>
-                ${job.responsibilities.map(resp => `<li>${this.escapeHtml(resp)}</li>`).join('')}
-              </ul>
-            </div>
-            ${job.highlights ? `
-            <div class="job-highlights">
-              ${job.highlights.map(highlight => `
-                <div class="highlight-card">
-                  <h5>${this.escapeHtml(highlight.title)}</h5>
-                  <p>${this.escapeHtml(highlight.description)}</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#education">Education</a></li>
+                    </ul>
                 </div>
-              `).join('')}
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:durgeshpatidarce@gmail.com">Email</a></li>
+                        <li><a href="https://www.linkedin.com/in/patidar-dees" target="_blank">LinkedIn</a></li>
+                        <li><a href="tel:+91 7389871595">Phone</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Location</h4>
+                    <ul>
+                        <li><p>Indore, India</p></li>
+                    </ul>
+                </div>
             </div>
-            ` : ''}
-            ${job.photos ? `
-            <div class="job-photos-gallery">
-              <h4>🖼️ Project Photos</h4>
-              <div class="job-photos-container">
-                ${job.photos.map((photo, idx) => `
-                  <div class="job-photo-item" onclick="window.photoModal.openPhoto(${idx}, ${JSON.stringify(job.photos.map(p => p.src)).replace(/"/g, '&quot;')})">
-                    <img src="${this.escapeHtml(photo.src)}" alt="${this.escapeHtml(photo.alt)}" loading="lazy">
-                    <div class="photo-overlay">
-                      <span>View</span>
-                    </div>
-                  </div>
-                `).join('')}
-              </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Durgesh Patidar. All rights reserved.</p>
             </div>
-            ` : ''}
-          </div>
-        `;
-      }
+        </div>
+    </footer>
 
-      escapeHtml(text) {
-        const map = {
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#039;'
+    <script>
+        // Scroll Progress Bar
+        const scrollProgress = document.createElement('div');
+        scrollProgress.className = 'scroll-progress';
+        document.body.prepend(scrollProgress);
+
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        const header = document.querySelector('.header');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+        const themeToggle = document.querySelector('.theme-toggle');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        const setTheme = (mode) => {
+            if (mode === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️';
+                themeToggle.setAttribute('aria-label', 'Switch to light mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeToggle.textContent = '🌙';
+                themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+            }
+            localStorage.setItem('portfolio-theme', mode);
         };
-        return text.replace(/[&<>"']/g, m => map[m]);
-      }
 
-      close() {
-        this.modal.classList.remove('active');
-        this.modal.setAttribute('aria-hidden', 'true');
-        this.isOpen = false;
-        setTimeout(() => {
-          document.body.style.overflow = '';
-        }, CONFIG.TRANSITION_DURATION);
-      }
-    }
+        const initTheme = () => {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme === 'dark' || savedTheme === 'light') {
+                setTheme(savedTheme);
+            } else {
+                setTheme(prefersDark ? 'dark' : 'light');
+            }
+        };
 
-    // ==================== CONTACT FORM CLASS ====================
-    class ContactForm {
-      constructor() {
-        this.form = document.getElementById('contactForm');
-        this.submitBtn = document.getElementById('formSubmit');
-        this.messageEl = document.getElementById('formMessage');
+        initTheme();
 
-        this.init();
-      }
-
-      init() {
-        this.form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          this.handleSubmit();
-        });
-      }
-
-      async handleSubmit() {
-        const formData = new FormData(this.form);
-        const data = Object.fromEntries(formData);
-
-        if (!this.validateForm(data)) {
-          return;
-        }
-
-        this.submitBtn.classList.add('loading');
-        this.submitBtn.textContent = 'Sending...';
-
-        try {
-          await this.sendEmail(data);
-          this.showMessage('✅ Message sent successfully! I\'ll get back to you within 24 hours.', 'success');
-          this.form.reset();
-        } catch (error) {
-          this.showMessage('❌ Failed to send message. Please try again or contact me directly.', 'error');
-        } finally {
-          this.submitBtn.classList.remove('loading');
-          this.submitBtn.textContent = '🚀 Send Message';
-        }
-      }
-
-      validateForm(data) {
-        if (!data.name?.trim()) {
-          this.showMessage('Please enter your name', 'error');
-          return false;
-        }
-
-        if (!data.email?.trim()) {
-          this.showMessage('Please enter your email', 'error');
-          return false;
-        }
-
-        if (!data.email.includes('@')) {
-          this.showMessage('Please enter a valid email address', 'error');
-          return false;
-        }
-
-        if (!data.subject?.trim()) {
-          this.showMessage('Please enter a subject', 'error');
-          return false;
-        }
-
-        if (!data.message?.trim()) {
-          this.showMessage('Please enter your message', 'error');
-          return false;
-        }
-
-        return true;
-      }
-
-      async sendEmail(data) {
-        // Replace with your actual email service endpoint
-        // Example: EmailJS, Formspree, Netlify Forms, etc.
-        return new Promise((resolve) => {
-          setTimeout(() => resolve(), 1500);
-        });
-      }
-
-      showMessage(message, type) {
-        if (this.messageEl) {
-          this.messageEl.remove();
-        }
-
-        const messageDiv = document.createElement('div');
-        messageDiv.id = 'formMessage';
-        messageDiv.className = `form-message ${type}`;
-        messageDiv.textContent = message;
-        messageDiv.role = 'alert';
-
-        this.form.appendChild(messageDiv);
-
-        if (type === 'success') {
-          setTimeout(() => {
-            messageDiv.style.opacity = '0';
-            messageDiv.style.transform = 'translateY(-10px)';
-            setTimeout(() => messageDiv.remove(), 300);
-          }, CONFIG.FORM_MESSAGE_TIMEOUT);
-        }
-      }
-    }
-
-    // ==================== PROJECTS GALLERY SCROLL ====================
-
-
-    // ==================== INITIALIZATION ====================
-    document.addEventListener('DOMContentLoaded', () => {
-      // Initialize modals
-      window.photoModal = new PhotoModal();
-      window.jobModal = new JobModal();
-      window.contactForm = new ContactForm();
-
-      // Setup job cards click handlers
-      document.querySelectorAll('.job-card').forEach((card, index) => {
-        card.addEventListener('click', () => {
-          window.jobModal.open(JOB_EXPERIENCES[index]);
+        themeToggle.addEventListener('click', () => {
+            setTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark');
         });
 
-        card.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            window.jobModal.open(JOB_EXPERIENCES[index]);
-          }
+        const smoothScroll = (targetId) => {
+            const targetSection = document.querySelector(targetId);
+            const headerHeight = header.offsetHeight;
+            if (!targetSection) return;
+            window.scrollTo({
+                top: targetSection.offsetTop - headerHeight + 4,
+                behavior: 'smooth'
+            });
+        };
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                smoothScroll(this.getAttribute('href'));
+            });
         });
-      });
 
-      // Setup fade-in animations
-      document.querySelectorAll('.card, section h2, .skill-item, .project-item, .job-card, .contact-form-section').forEach(el => {
-        el.classList.add('fade-in');
-        observer.observe(el);
-      });
+        const revealItems = document.querySelectorAll('.section, .skill-card, .experience-item, .education-item, .contact-item, .stat-item');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.18
+        });
 
-      // Header animations
-      document.querySelectorAll('header p').forEach((p, i) => {
-        p.style.opacity = '0';
-        p.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-          p.style.transition = 'all 0.8s ease';
-          p.style.opacity = '1';
-          p.style.transform = 'translateY(0)';
-        }, i * 150);
-      });
+        revealItems.forEach(item => revealObserver.observe(item));
 
-      // Dark mode toggle
-      const darkModeBtn = document.getElementById('darkModeBtn');
-      darkModeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        document.documentElement.classList.toggle('dark');
-        if (navigator.vibrate) {
-          navigator.vibrate(50);
-        }
-      });
-    });
-  </script>
+        const highlightCurrentLink = () => {
+            let closestLink = null;
+            let closestDistance = Number.POSITIVE_INFINITY;
+            const offset = header.offsetHeight + 20;
+
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const distance = Math.abs(rect.top - offset);
+                const link = document.querySelector(`.nav-link[href="#${section.getAttribute('id')}"]`);
+                if (!link) return;
+
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestLink = link;
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.toggle('active-link', link === closestLink);
+            });
+        };
+
+        const handleScroll = () => {
+            if (window.scrollY > 70) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            highlightCurrentLink();
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', () => {
+            handleScroll();
+            revealItems.forEach(item => {
+                if (item.getBoundingClientRect().top < window.innerHeight) {
+                    item.classList.add('visible');
+                }
+            });
+
+            // Animated Stat Counters
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                        const element = entry.target;
+                        const targetText = element.textContent;
+                        const numMatch = targetText.match(/\d+/);
+                        
+                        if (numMatch) {
+                            const targetNumber = parseInt(numMatch[0]);
+                            const prefix = targetText.substring(0, targetText.indexOf(numMatch[0]));
+                            const suffix = targetText.substring(targetText.indexOf(numMatch[0]) + numMatch[0].length);
+                            const duration = 1500;
+                            const startTime = Date.now();
+
+                            const counter = () => {
+                                const elapsed = Date.now() - startTime;
+                                const progress = Math.min(elapsed / duration, 1);
+                                const easeOut = 1 - Math.pow(1 - progress, 3);
+                                const currentNumber = Math.floor(easeOut * targetNumber);
+                                element.textContent = prefix + currentNumber + suffix;
+
+                                if (progress < 1) {
+                                    requestAnimationFrame(counter);
+                                } else {
+                                    element.textContent = targetText;
+                                    element.classList.add('counted');
+                                }
+                            };
+                            counter();
+                        }
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5, rootMargin: '0px 0px -100px 0px' });
+
+            statNumbers.forEach(num => counterObserver.observe(num));
+
+            // Skill Progress Bars Animation
+            const skillBars = document.querySelectorAll('.skill-bar-fill');
+            
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                if (width) {
+                    bar.style.setProperty('--width', width);
+                }
+            });
+
+            const barObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                        entry.target.classList.add('animated');
+                        barObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            skillBars.forEach(bar => barObserver.observe(bar));
+        });
+    </script>
 </body>
 </html>
